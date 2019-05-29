@@ -1,0 +1,16 @@
+{
+  "name": "prototypeplaybook",
+  "private": true,
+  "dependencies": {
+    "@rails/webpacker": "^4.0.2",
+    "node-sass": "4.5.3",
+    "playbook": "^1.0.0",
+    "sass-loader": "6.0.6",
+    "style-loader": "0.18.2",
+    "playbook": "git://github.com/powerhome/playbook.git"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^2.0.1",
+    "webpack-dev-server": "^3.2.1"
+  }
+}

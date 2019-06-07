@@ -14,4 +14,12 @@
  *= require_self
  */
 
-@import "main";
+
+ /* PLAYBOOK PROTOTYPE =============================== */
+@import "playbook";
+
+/* NITRO-STORYBOOK PROTOTYPE ==========================
+ * If you would like to create a prototype using
+ * nitro-storybook styles, uncomment the line below.
+ * WARNING: This chould cause style bleed when using both libraries */
+// @import "storybook";

@@ -14,3 +14,8 @@ bundle install
 # node version 8.9.4
 yarn install --check-files
 ```
+
+```bash
+# Run your server
+rails s
+```

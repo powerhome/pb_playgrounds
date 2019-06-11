@@ -49,7 +49,7 @@ git push origin demo/my-prototype-name
 
 # Help
 
-<help><summary>Adding new pages</summary>
+<details><summary>Adding new pages</summary>
 <p>
 When you start the server, the root page is [index.html.erb](https://github.com/powerhome/playgrounds/blob/master/app/views/pages/index.html.erb).
 
@@ -95,7 +95,7 @@ Please note:
 2. `pages#my_new_page` the value after #, must be identical to what you added to the pages controller above.
 
 </p>
-</help>
+</details>
 
 # Troubleshooting
 

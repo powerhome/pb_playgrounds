@@ -44,7 +44,7 @@ When you start the server on your prototype branch, the root page is [index.html
 
 If you have a multi-page prototype, you will want to add additional pages.  Please follow the guide below:
 
-##### 1. Create the new page
+### 1. Create the new page
 Create a new file in `app/views/pages/my_new_page.html.erb`.
 
 Please note:
@@ -53,7 +53,7 @@ Please note:
 3. The file is named all lowercase.
 
 
-##### 2. Add to controller
+### 2. Add to controller
 ```erb
 # app/controllers/pages_controller.rb
 
@@ -67,7 +67,7 @@ Please note:
 1. The def is named exactly like the html.erb file created above.
 
 
-##### 3. Create a new route
+### 3. Create a new route
 ```erb
 # config/routes.rb
 

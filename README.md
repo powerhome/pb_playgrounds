@@ -52,6 +52,7 @@ Please note:
 2. The file is multiple words (my new page), and it has underscores.
 3. The file is named all lowercase.
 
+---
 
 ### 2. Add to controller
 ```erb
@@ -66,6 +67,7 @@ end
 Please note:
 1. The def is named exactly like the html.erb file created above.
 
+---
 
 ### 3. Create a new route
 ```erb

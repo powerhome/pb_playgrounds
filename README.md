@@ -100,6 +100,7 @@ Please note:
 </details>
 
 <details><summary>Using Playbook Kits</summary>
+  
   ## Using Playbook Kits
   
   ### Confirm styles are imported
@@ -122,6 +123,7 @@ Please note:
 </details>
 
 <details><summary>Using Storybook</summary>
+  
   ## Using Storybook
   
   ### Confirm styles are imported

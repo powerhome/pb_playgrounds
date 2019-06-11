@@ -51,6 +51,8 @@ git push origin demo/my-prototype-name
 
 <details><summary>Adding new pages</summary>
 <p>
+  
+## Adding New Pages
 When you start the server, the root page is [index.html.erb](https://github.com/powerhome/playgrounds/blob/master/app/views/pages/index.html.erb).
 
 If you have a multi-page prototype, you will want to add additional pages.  Please follow the guide below:
@@ -99,7 +101,10 @@ Please note:
 
 # Troubleshooting
 
-## > Yarn packages are out of date
+<details>
+  <summary>Yarn packages are out of date</summary>
+  
+  ## Yarn packages are out of date
 If you try running playgrounds by `rails s`, but the terminal says:
 
 ```bash
@@ -124,5 +129,4 @@ yarn install --check-files
 # Try running your rails server again
 rails s
 ```
-
----
+</details>

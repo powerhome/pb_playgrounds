@@ -45,6 +45,8 @@ git checkout -b demo/my-prototype-name
 git push origin demo/my-prototype-name
 ```
 
+> Playgrounds prototype branches will never be merged into master. Pull requests are for team review only.
+
 ---
 
 # Help

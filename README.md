@@ -45,8 +45,12 @@ git checkout -b demo/my-prototype-name
 git push origin demo/my-prototype-name
 ```
 
-## Adding new pages
+---
 
+# Help
+
+<help><summary>Adding new pages</summary>
+<p>
 When you start the server, the root page is [index.html.erb](https://github.com/powerhome/playgrounds/blob/master/app/views/pages/index.html.erb).
 
 If you have a multi-page prototype, you will want to add additional pages.  Please follow the guide below:
@@ -90,6 +94,8 @@ Please note:
 1. `my-new-page-custom` can be anything, and does not have to relate the the html or controller. This defines what is in the url, example http://localhost:3000/my-new-page-custom.
 2. `pages#my_new_page` the value after #, must be identical to what you added to the pages controller above.
 
+</p>
+</help>
 
 # Troubleshooting
 

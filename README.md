@@ -64,8 +64,8 @@ Create a new file in `app/views/pages/my_new_page.html.erb`.
 
 Please note:
 1. The file extension ends in `.html.erb`. This is required.
-2. The file is multiple words (my new page), and it has underscores.
-3. The file is named all lowercase.
+2. If the file is descibing a page in multiple words (my new page), and it should be written with underscores.
+3. The file name should be all lowercase.
 
 ---
 
@@ -95,7 +95,7 @@ end
 ```
 
 Please note:
-1. `my-new-page-custom` can be anything, and does not have to relate the the html or controller. This defines what is in the url, example http://localhost:3000/my-new-page-custom.
+1. `my-new-page-custom` can be anything, and does not have to related the the name defined in html or controller. This text is in the url, example http://localhost:3000/my-new-page-custom.
 2. `pages#my_new_page` the value after #, must be identical to what you added to the pages controller above.
 
 </p>

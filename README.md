@@ -20,6 +20,9 @@ yarn install --check-files
 rails s
 ```
 
+View prototype on [http://localhost:3000](http://localhost:3000).
+
+
 
 ## New Prototype
 
@@ -40,7 +43,7 @@ git push origin demo/my-prototype-name
 
 ## Adding new pages
 
-When you start the server on your prototype branch, the root page is [index.html.erb](https://github.com/powerhome/playgrounds/blob/master/app/views/pages/index.html.erb).
+When you start the server, the root page is [index.html.erb](https://github.com/powerhome/playgrounds/blob/master/app/views/pages/index.html.erb).
 
 If you have a multi-page prototype, you will want to add additional pages.  Please follow the guide below:
 

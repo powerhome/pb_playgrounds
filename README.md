@@ -89,3 +89,32 @@ end
 Please note:
 1. `my-new-page-custom` can be anything, and does not have to relate the the html or controller. This defines what is in the url, example http://localhost:3000/my-new-page-custom.
 2. `pages#my_new_page` the value after #, must be identical to what you added to the pages controller above.
+
+
+# Troubleshooting
+
+## Yarn packages are out of date
+If you try running playgrounds by `rails s`, but the terminal says:
+
+```bash
+========================================
+  Your Yarn packages are out of date!
+  Please run `yarn install --check-files` to update.
+========================================
+```
+
+### Try the following:
+```bash
+# Use the correct version of node required by the project
+nvm use 8.9.4
+```
+
+```bash
+# Run yarn install
+yarn install --check-files
+```
+
+```bash
+# Try running your rails server again
+rails s
+```

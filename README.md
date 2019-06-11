@@ -93,7 +93,7 @@ Please note:
 
 # Troubleshooting
 
-## Yarn packages are out of date
+## > Yarn packages are out of date
 If you try running playgrounds by `rails s`, but the terminal says:
 
 ```bash
@@ -103,7 +103,7 @@ If you try running playgrounds by `rails s`, but the terminal says:
 ========================================
 ```
 
-### Try the following:
+#### Try the following:
 ```bash
 # Use the correct version of node required by the project
 nvm use 8.9.4
@@ -118,3 +118,5 @@ yarn install --check-files
 # Try running your rails server again
 rails s
 ```
+
+---

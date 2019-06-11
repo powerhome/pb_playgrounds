@@ -25,6 +25,10 @@ View prototype on [http://localhost:3000](http://localhost:3000).
 
 
 ## New Prototype
+```bash
+# Always start from master
+git checkout origin master
+```
 
 ```bash
 # pull latest master branch locally

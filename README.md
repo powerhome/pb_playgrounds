@@ -105,7 +105,7 @@ Please note:
   
   ### Confirm styles are imported
   ```scss
-  # app/assets/stylesheets/application.scss
+  // app/assets/stylesheets/application.scss
   
   @import "playbook";
   ```
@@ -128,7 +128,7 @@ Please note:
   
   ### Confirm styles are imported
   ```scss
-  # app/assets/stylesheets/application.scss
+  // app/assets/stylesheets/application.scss
   
   @import "storybook";
   ```

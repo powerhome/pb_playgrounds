@@ -70,7 +70,7 @@ namespace :deploy do
     sh 'cd out'
     sh 'git add --all'
     sh 'git commit -m "Deploy to gh-pages"'
-    sh 'git push origin gh-pages'
+    sh 'git push origin gh-pages --force'
     sh 'cd ..'
   end
 

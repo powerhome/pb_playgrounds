@@ -65,6 +65,20 @@ namespace :deploy do
     sh 'cd ..'
   end
 
+  desc 'Deploy to GitHub Pages'
+  task gh_pages: :environment do
+    sh 'cd out'
+    sh 'git add --all'
+    sh 'git commit -m "Deploy to gh-pages"'
+    sh 'git push origin gh-pages'
+    sh 'cd ..'
+  end
+
+  # prepare for push
+  # rm -rf out
+  # echo "out/" >> .gitignore
+  # git worktree add out gh-pages
+
 end
 
 

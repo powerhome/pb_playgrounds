@@ -2,11 +2,14 @@ namespace :deploy do
 
   desc "Build the files"
   task build: :environment do
-    puts "Starting Build"
-    Rake::Task["deploy:start"].invoke
     branch_name = `git rev-parse --abbrev-ref HEAD`.chomp
-    sh 'rm -rf out'
     require 'action_dispatch/routing/inspector'
+
+    puts "\nStarting Build...\n"
+
+    Rake::Task["deploy:start"].invoke
+    Rake::Task["deploy:clean"].invoke
+
     all_routes = Rails.application.routes.routes.map do |route|
       { alias: route.name, path: route.path.spec.to_s, controller: route.defaults[:controller], action: route.defaults[:action] }
     end
@@ -18,13 +21,13 @@ namespace :deploy do
       puts "Making directory: out/#{branch_name}"
       FileUtils.mkdir_p "out/#{branch_name}" unless File.exists? "out/#{branch_name}"
       FileUtils.chdir "out/#{branch_name}" do
-        puts "Saving: http://localhost:3000#{route[:path]}"
+        puts "\nSaving http://localhost:3000#{route[:path]}...\n"
         `wget -mnH -p -k --adjust-extension --timeout=10 --waitretry=10 --tries=15 --retry-connrefused  http://localhost:3000#{route[:path]}`
       end
     end;nil
 
     Rake::Task["deploy:stop"].invoke
-    puts "View your files at out/#{branch_name}"
+    puts "\nView your files at out/#{branch_name}\n"
   end
 
 
@@ -32,7 +35,7 @@ namespace :deploy do
   task test: :environment do
     branch_name = `git rev-parse --abbrev-ref HEAD`.chomp
     Dir.chdir 'out' do
-      puts "Started HTTP server at http://localhost:8000/#{branch_name}/ Press CTRL+C to exit."
+      puts "\nStarted HTTP server at http://localhost:8000/#{branch_name}/ Press CTRL+C to exit.\n"
       `python -m SimpleHTTPServer`
     end
   end
@@ -40,14 +43,14 @@ namespace :deploy do
   desc 'Stop rails server'
   task stop: :environment do
     File.new("tmp/pids/server.pid").tap { |f| Process.kill 9, f.read.to_i }
-    puts "Rails server Stopped"
+    puts "\nRails server Stopped\n"
   end
 
   desc 'Starts rails server'
   task start: :environment do
-    puts "Server Starting"
+    puts "\nServer Starting...\n"
     `rails s -d`
-    puts "Server Started"
+    puts "\nServer Started\n"
   end
 
   desc "Restarts rails server"
@@ -59,28 +62,45 @@ namespace :deploy do
 
   desc 'Deploy to GitHub Pages'
   task gh_pages: :environment do
-    sh 'cd out'
-    sh 'git add --all'
-    sh 'git commit -m "Deploy to gh-pages"'
-    sh 'git push origin gh-pages'
-    sh 'cd ..'
+    branch_name = `git rev-parse --abbrev-ref HEAD`.chomp
+    puts "\nDeploying to GitHub Pages...\n"
+    `cd out`
+    `git add --all`
+    `git commit -m "Deploy to gh-pages"`
+    `git push origin gh-pages`
+    `cd ..`
+    puts "\nDeployed to: https://tech.powerhrg.com/playgrounds/#{branch_name}\n"
   end
 
-  desc 'Deploy to GitHub Pages'
-  task gh_pages: :environment do
-    sh 'cd out'
-    sh 'git add --all'
-    sh 'git commit -m "Deploy to gh-pages"'
-    sh 'git push origin gh-pages --force'
-    sh 'cd ..'
+
+  desc 'Cleanup'
+  task clean: :environment do
+    puts "\nCleaning directory...\n"
+    `rm -rf out`
   end
 
-  # prepare for push
-  # rm -rf out
-  # echo "out/" >> .gitignore
-  # git worktree add out gh-pages
+
+  desc 'Set git worktree'
+  task set_worktree: :environment do
+    puts "Set git worktree"
+    `git worktree add out gh-pages`
+  end
+
+
+  desc 'Remove git worktree'
+  task remove_worktree: :environment do
+    puts "Remove git worktree"
+    `git worktree remove out`
+  end
+
+
+  # 1. Clean directory
+  # 2. Add worktree
+  # 3. Build
+  # 4. Push
+  # 5. Remove worktree
 
 end
 
-
-task :all => ["deploy:build", "deploy:gh_pages"]
+desc "Build and deploy your prototype to Playgrounds"
+task :deploy => ["deploy:clean", "deploy:set_worktree", "deploy:build", "deploy:gh_pages", "deploy:remove_worktree"]

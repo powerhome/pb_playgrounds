@@ -88,10 +88,10 @@ namespace :deploy do
   end
 
 
-  desc 'Remove git worktree'
-  task remove_worktree: :environment do
-    puts "\nRemoving git worktree...\n"
-    `git worktree remove out`
+  desc 'Prune git worktree'
+  task prune_worktree: :environment do
+    puts "\nPruneing git worktree...\n"
+    `git worktree prune`
   end
 
 
@@ -104,4 +104,4 @@ namespace :deploy do
 end
 
 desc "Build and deploy your prototype to Playgrounds"
-task :deploy => ["deploy:clean", "deploy:set_worktree", "deploy:build", "deploy:gh_pages", "deploy:remove_worktree"]
+task :deploy => ["deploy:clean", "deploy:set_worktree", "deploy:build", "deploy:gh_pages", "deploy:prune_worktree"]

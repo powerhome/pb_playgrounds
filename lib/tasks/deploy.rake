@@ -77,6 +77,7 @@ namespace :deploy do
   task clean: :environment do
     puts "\nCleaning directory...\n"
     `rm -rf out`
+    FileUtils.mkdir_p "out"
   end
 
 

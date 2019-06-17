@@ -84,7 +84,7 @@ namespace :deploy do
   desc 'Set git worktree'
   task set_worktree: :environment do
     puts "\nSetting git worktree...\n"
-    `git worktree add out gh-pages`
+    `git worktree add -B gh-pages out origin/gh-pages`
   end
 
 

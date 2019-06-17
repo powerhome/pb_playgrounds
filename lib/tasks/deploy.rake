@@ -90,7 +90,7 @@ namespace :deploy do
 
   desc 'Prune git worktree'
   task prune_worktree: :environment do
-    puts "\nPruneing git worktree...\n"
+    puts "\nPruning git worktree...\n"
     `git worktree prune`
   end
 

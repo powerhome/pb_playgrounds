@@ -2,8 +2,8 @@ namespace :deploy do
 
   desc "Build the files"
   task build: :environment do
-    # Rake::Task["deploy:start"].invoke
-    puts "THIS FIRED!"
+    puts "Starting Build"
+    Rake::Task["deploy:start"].invoke
     branch_name = `git rev-parse --abbrev-ref HEAD`.chomp
     sh 'rm -rf out'
     require 'action_dispatch/routing/inspector'
@@ -19,7 +19,7 @@ namespace :deploy do
       FileUtils.mkdir_p "out/#{branch_name}" unless File.exists? "out/#{branch_name}"
       FileUtils.chdir "out/#{branch_name}" do
         puts "Saving: http://localhost:3000#{route[:path]}"
-        `wget -mnH -p -k --adjust-extension http://localhost:3000#{route[:path]}`
+        `wget -mnH -p -k --adjust-extension --timeout=10 --waitretry=10 --tries=15 --retry-connrefused  http://localhost:3000#{route[:path]}`
       end
     end;nil
 
@@ -40,12 +40,13 @@ namespace :deploy do
   desc 'Stop rails server'
   task stop: :environment do
     File.new("tmp/pids/server.pid").tap { |f| Process.kill 9, f.read.to_i }
-    puts "Server Stopped"
+    puts "Rails server Stopped"
   end
 
   desc 'Starts rails server'
   task start: :environment do
-    Process.exec("rails s -d")
+    puts "Server Starting"
+    `rails s -d`
     puts "Server Started"
   end
 

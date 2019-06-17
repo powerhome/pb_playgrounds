@@ -82,14 +82,14 @@ namespace :deploy do
 
   desc 'Set git worktree'
   task set_worktree: :environment do
-    puts "Set git worktree"
+    puts "\nSetting git worktree...\n"
     `git worktree add out gh-pages`
   end
 
 
   desc 'Remove git worktree'
   task remove_worktree: :environment do
-    puts "Remove git worktree"
+    puts "\nRemoving git worktree...\n"
     `git worktree remove out`
   end
 

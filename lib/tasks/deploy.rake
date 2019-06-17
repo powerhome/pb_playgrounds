@@ -43,17 +43,17 @@ namespace :deploy do
   desc 'Stop rails server'
   task stop: :environment do
     File.new("tmp/pids/server.pid").tap { |f| Process.kill 9, f.read.to_i }
-    puts "\nRails server Stopped\n"
+    puts "\nRails server stopped\n"
   end
 
   desc 'Starts rails server'
   task start: :environment do
-    puts "\nServer Starting...\n"
+    puts "\nServer starting...\n"
     `rails s -d`
-    puts "\nServer Started\n"
+    puts "\nServer started\n"
   end
 
-  desc "Restarts rails server"
+  desc "Restart rails server"
   task restart: :environment do
     Rake::Task["deploy:stop"].invoke
     Rake::Task["deploy:start"].invoke

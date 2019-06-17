@@ -99,7 +99,7 @@ namespace :deploy do
   # 2. Add worktree
   # 3. Build
   # 4. Push
-  # 5. Remove worktree
+  # 5. Prune worktree
 
 end
 

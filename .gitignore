@@ -26,3 +26,5 @@ tmp/
 .vscode
 public/packs
 out/*
+out/
+out

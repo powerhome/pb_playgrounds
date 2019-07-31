@@ -1,0 +1,12 @@
+.nitro-navigation {
+  .badge-connect-unread-messages {
+    background: $power-red;
+    display: none;
+    position: absolute;
+    bottom: 8px;
+    left: 26px;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+  }
+}

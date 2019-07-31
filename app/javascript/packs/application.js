@@ -18,7 +18,7 @@
 // import "playbook/app/pb_kits/playbook/packs/main.scss";
 
 // TEST------------------------------------------
-import "playbook/app/pb_kits/playbook/packs/pb_caption.js";
+// import "playbook/app/pb_kits/playbook/packs/pb_caption.js";
 
 
 // import Caption from "playbook/app/pb_kits/playbook/pb_caption/_caption.jsx";
@@ -28,3 +28,6 @@ import "playbook/app/pb_kits/playbook/packs/pb_caption.js";
 // ----------------------------------------------
 
 // console.log('Hello World from Webpacker')
+
+import "./fontawesome.js"
+import "./regular.js"

@@ -1,0 +1,11 @@
+$avatar-size: 44px;
+
+.profile {
+  &-avatar {
+    width: $avatar-size;
+    height: $avatar-size;
+    overflow: hidden;
+    background: rgba($white, $opacity-1);
+    border-radius: $border-rad-light;
+  }
+}

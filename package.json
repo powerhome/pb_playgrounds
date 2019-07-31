@@ -2,13 +2,18 @@
   "name": "prototypeplaybook",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "^4.0.2",
+    "@babel/preset-react": "^7.0.0",
+    "@rails/webpacker": "^4.0.7",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "node-sass": "4.5.3",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "sass-loader": "6.0.6",
     "style-loader": "0.18.2"
   },
   "devDependencies": {
     "clean-webpack-plugin": "^2.0.1",
-    "webpack-dev-server": "^3.2.1"
+    "webpack-dev-server": "^3.7.2"
   }
 }

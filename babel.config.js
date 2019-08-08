@@ -37,10 +37,10 @@ module.exports = function(api) {
       [
         require('@babel/preset-react').default,
         {
-          development: isDevelopmentEnv || isTestEnv,
-          useBuiltIns: true
+          development: isDevelopmentEnv || isTestEnv
         }
-      ]
+      ],
+      '@babel/flow'
     ].filter(Boolean),
     plugins: [
       require('babel-plugin-macros'),

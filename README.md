@@ -2,6 +2,28 @@
 
 Playground for Playbook UI Kits
 
+## Prerequisites
+
+### Node version manager (NVM)
+
+This utility is used throughout Nitro to keep us all at the same version of `node` and prevent chaos.
+
+[NVM Installation Instructions on Github](https://github.com/nvm-sh/nvm#install--update-script)
+
+Follow the instructions in the link above
+
+#### ZSH Users: Add this code block somewhere in your `~/.zshrc`
+
+```sh
+# NVM
+autoload -U add-zsh-hook
+load-nvmrc() {
+  if [[ -f .nvmrc && -r .nvmrc ]]; then
+    nvm use
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+```
 
 ## Getting Started
 

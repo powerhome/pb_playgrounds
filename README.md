@@ -44,7 +44,9 @@ rails s
 
 View prototype on [http://localhost:3000](http://localhost:3000).
 
+#### Other Features
 
+- `yarn build` - this will compile (only once) and will not deliver updates automatically to your browser on save.
 
 ## New Prototype
 ```bash
@@ -121,6 +123,39 @@ Please note:
 2. `pages#my_new_page` the value after #, must be identical to what you added to the pages controller above.
 
 </p>
+</details>
+
+<details>
+  <summary>Working with React + Playbook</summary>
+
+  ## Working with React + Playbook
+
+  `Playgrounds` works really well with `Playbook`, but there is a minor amount of setup required to maximize this effect:
+
+  ### Working with a Local Version of Playbook in React
+
+  #### Webpack HMR
+
+  Webpack Hot Module Reloading (HMR) is enabled in `Playgrounds` which allows you to make changes to a React component and immediately see the changes you made in your browser *without needing to refresh!*
+
+  Here's how to get that feature working:
+
+  1. in a new tab, from the current `playgrounds` working directory root:
+
+      - `yarn hmr` - this starts the HMR server which will actively watch, compile and deliver updates to your browser just by saving changes.
+
+  #### Beyond HMR
+
+  Another available feature is the ability to work with your current locally cloned `Playbook` repository. To enable this you will need to follow these steps:
+
+  1. Change directories to your local `playbook-ui` repo instance.
+  2. Run `yarn link` - this will create a symlink to this repository that you will use in the last step
+  3. Change directories to your local `playgrounds` repo instance.
+  4. Run `yarn link playbook-ui` - this completes the linking to the symlink that you created in step #2 above.
+
+  Now you can simply run HMR in `Playgrounds` and make changes to your `Playbook` repo all while seeing the changes propogate instantly in your browser!
+
+  Questions? Please ping Stephen Marshall 👍
 </details>
 
 <details><summary>Using Playbook Kits</summary>

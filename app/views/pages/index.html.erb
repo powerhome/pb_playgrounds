@@ -1,8 +1,19 @@
+<%= javascript_pack_tag "react-demos" %>
 
-<%= pb_rails("card") do %>
-  <%= pb_rails("caption", props: {text: "This is a caption"}) %>
-<% end %>
+<div class="container">
+  <header class="m-5 text-center">
+    <h1>Kits Test Page</h1>
+  </header>
 
+  <section class="card m-5 p-5">
+    <h3>Rails Kits</h3>
+    <%= pb_rails("card") do %>
+      <%= pb_rails("caption", props: {text: "This is a caption"}) %>
+    <% end %>
+    <%= pb_react("caption", props: {text: "This is a react caption"}) %>
+  </section>
 
-<h1>Test</h1>
-<%= pb_react("caption", props: {text: "This is a react caption"}) %>
+  <section id="react" class="card m-5 p-5">
+    <!-- React components here -->
+  </section>
+</div>

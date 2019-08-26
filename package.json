@@ -2,7 +2,8 @@
   "name": "prototypeplaybook",
   "private": true,
   "scripts": {
-    "build": "./bin/webpack --profile --progress"
+    "build": "./bin/webpack --profile --progress",
+    "hmr": "./bin/webpack-dev-server"
   },
   "dependencies": {
     "@babel/preset-flow": "^7.0.0",
@@ -10,6 +11,7 @@
     "@rails/webpacker": "^4.0.7",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "node-sass": "4.5.3",
+    "playbook-ui": "^2.8.4",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

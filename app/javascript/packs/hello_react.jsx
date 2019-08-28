@@ -11,17 +11,17 @@ const Hello = props => (
   <div>
     <div className="my-5">
       <Avatar
-          name="Terry Johnsonville"
+          name="Terry Johnsons"
           size="sm"
           url="https://randomuser.me/api/portraits/men/44.jpg"
       />
-      <div class="my-3">
+      <div className="my-3">
         {`Hola, ${props.name}!`}
       </div>
       <Button
-          onClick={()=>{alert("Whyda push me?!")}}
+          onClick={()=>{alert("Whydya push me?!")}}
           type="primary"
-          text="Push It!"
+          text="Push It (real good)!"
       />
     </div>
     <Image url="https://unsplash.it/500/400/?image=634" />

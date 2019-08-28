@@ -1,107 +1,150 @@
-namespace :deploy do
+# frozen_string_literal: true
 
-  desc "Build the files"
-  task build: :environment do
+require 'action_dispatch/routing/inspector'
+
+namespace :deploy do # rubocop:disable Metrics/BlockLength
+  desc 'Build the files'
+  task build: :environment do # rubocop:disable Metrics/BlockLength
     branch_name = `git rev-parse --abbrev-ref HEAD`.chomp
-    require 'action_dispatch/routing/inspector'
+    out = "out/#{branch_name}"
 
-    puts "\nStarting Build...\n"
+    puts "\n"
+    puts 'Starting Build...'
+    puts "\n"
 
-    Rake::Task["deploy:start"].invoke
-    Rake::Task["deploy:clean"].invoke
+    ['deploy:yarn', 'deploy:start'].each { |task| Rake::Task[task].invoke }
 
     all_routes = Rails.application.routes.routes.map do |route|
-      { alias: route.name, path: route.path.spec.to_s, controller: route.defaults[:controller], action: route.defaults[:action] }
+      {
+        alias: route.name,
+        path: route.path.spec.to_s,
+        controller: route.defaults[:controller],
+        action: route.defaults[:action]
+      }
     end
-    allowed_controllers = ["pages"]
-    all_routes.reject! {|route| !allowed_controllers.include?(route[:controller])}
 
-    inspector = ActionDispatch::Routing::RoutesInspector.new(all_routes)
+    allowed_controllers = ['pages']
+    all_routes.select! { |route| allowed_controllers.include?(route[:controller]) }
+
+    ActionDispatch::Routing::RoutesInspector.new(all_routes)
+
     all_routes.each do |route|
-      puts "Making directory: out/#{branch_name}"
-      FileUtils.mkdir_p "out/#{branch_name}" unless File.exists? "out/#{branch_name}"
-      FileUtils.chdir "out/#{branch_name}" do
-        puts "\nSaving http://localhost:3000#{route[:path]}...\n"
-        `wget -mnH -p -k --adjust-extension --timeout=10 --waitretry=10 --tries=15 --retry-connrefused  http://localhost:3000#{route[:path]}`
+      route_path = route[:path]
+
+      puts "Making directory: #{out}"
+
+      FileUtils.mkdir out unless File.exist? out
+
+      wget_args = [
+        '-mnH -p -k --adjust-extension --timeout=10',
+        '--waitretry=10 --tries=15 --retry-connrefused'
+      ]
+
+      FileUtils.chdir out do
+        puts "Saving http://localhost:3000#{route_path}..."
+        `wget #{wget_args.join(' ')} http://localhost:3000#{route[:path]}`
       end
-    end;nil
+    end
 
-    Rake::Task["deploy:stop"].invoke
-    puts "\nView your files at out/#{branch_name}\n"
+    Rake::Task['deploy:stop'].invoke
+
+    puts "\n"
+    puts "View your files at #{out}"
+    puts "\n"
   end
-
 
   desc 'Start a HTTP server from ./out/ directory'
   task test: :environment do
     branch_name = `git rev-parse --abbrev-ref HEAD`.chomp
     Dir.chdir 'out' do
-      puts "\nStarted HTTP server at http://localhost:8000/#{branch_name}/ Press CTRL+C to exit.\n"
+      puts "\n"
+      puts "Started HTTP server at http://localhost:8000/#{branch_name}/"
+      puts 'Press CTRL+C to exit.'
+      puts "\n"
+
       `python -m SimpleHTTPServer`
     end
   end
 
   desc 'Stop rails server'
   task stop: :environment do
-    File.new("tmp/pids/server.pid").tap { |f| Process.kill 9, f.read.to_i }
-    puts "\nRails server stopped\n"
+    File.new('tmp/pids/server.pid').tap { |f| Process.kill 9, f.read.to_i }
+    puts "\n"
+    puts 'Rails server stopped'
+    puts "\n"
   end
 
   desc 'Starts rails server'
   task start: :environment do
-    puts "\nServer starting...\n"
-    `rails s -d`
-    puts "\nServer started\n"
+    puts "\n"
+    puts 'Server starting...'
+    puts "\n"
+
+    `bin/rails s -d`
+
+    puts "\n"
+    puts 'Server started'
+    puts "\n"
   end
 
-  desc "Restart rails server"
+  desc 'Restart rails server'
   task restart: :environment do
-    Rake::Task["deploy:stop"].invoke
-    Rake::Task["deploy:start"].invoke
+    Rake::Task['deploy:stop'].invoke
+    Rake::Task['deploy:start'].invoke
   end
 
+  desc 'Compile yarn assets'
+  task yarn: :environment do
+    `yarn build`
+  end
 
   desc 'Deploy to GitHub Pages'
   task gh_pages: :environment do
     branch_name = `git rev-parse --abbrev-ref HEAD`.chomp
-    puts "\nDeploying to GitHub Pages...\n"
-    `cd out`
-    `git add --all`
-    `git commit -m "Deploy to gh-pages"`
-    `git push origin gh-pages`
-    `cd ..`
+    puts "\n"
+    puts 'Deploying to GitHub Pages...'
+    puts "\n"
+
+    `cd out && git add .`
+    `cd out && git commit -m 'Deploy to gh-pages'`
+    `cd out && git push`
+
     puts "\nDeployed to: https://tech.powerhrg.com/playgrounds/#{branch_name}\n"
   end
 
-
-  desc 'Cleanup'
-  task clean: :environment do
-    puts "\nCleaning directory...\n"
-    `rm -rf out`
-    FileUtils.mkdir_p "out"
-  end
-
-
   desc 'Set git worktree'
   task set_worktree: :environment do
-    puts "\nSetting git worktree...\n"
-    `git worktree add -B gh-pages out origin/gh-pages`
+    puts "\n"
+    puts 'Setting git worktree...'
+    puts "\n"
+
+    FileUtils.mkdir 'out'
+
+    tree = `git worktree list|grep gh-pages`
+
+    `git worktree add -B gh-pages out origin/gh-pages` if tree.empty?
   end
 
+  desc 'Remove git worktree'
+  task remove_worktree: :environment do
+    puts "\n"
+    puts 'Removing git worktree...'
+    puts "\n"
 
-  desc 'Prune git worktree'
-  task prune_worktree: :environment do
-    puts "\nPruning git worktree...\n"
-    `git worktree prune`
+    `git worktree remove out`
   end
-
 
   # 1. Clean directory
   # 2. Add worktree
   # 3. Build
   # 4. Push
   # 5. Prune worktree
-
 end
 
-desc "Build and deploy your prototype to Playgrounds"
-task :deploy => ["deploy:clean", "deploy:set_worktree", "deploy:build", "deploy:gh_pages", "deploy:prune_worktree"]
+desc 'Build and deploy your prototype to Playgrounds'
+task deploy: [
+  'deploy:set_worktree',
+  'deploy:build',
+  'deploy:gh_pages',
+  'deploy:remove_worktree'
+]

@@ -112,17 +112,23 @@ namespace :deploy do # rubocop:disable Metrics/BlockLength
     puts "\nDeployed to: https://tech.powerhrg.com/playgrounds/#{branch_name}\n"
   end
 
+  desc 'Cleanup'
+  task clean: :environment do	
+    puts "\nCleaning directory...\n"	
+    `rm -rf out`
+  end
+
   desc 'Set git worktree'
   task set_worktree: :environment do
     puts "\n"
     puts 'Setting git worktree...'
     puts "\n"
 
-    FileUtils.mkdir 'out'
+    `mkdir out`
 
     tree = `git worktree list|grep gh-pages`
 
-    `git worktree add -B gh-pages out origin/gh-pages` if tree.empty?
+    `git worktree add -B gh-pages out origin/gh-pages --force` if tree.empty?
   end
 
   desc 'Remove git worktree'
@@ -131,7 +137,7 @@ namespace :deploy do # rubocop:disable Metrics/BlockLength
     puts 'Removing git worktree...'
     puts "\n"
 
-    `git worktree remove out`
+    `git worktree prune`
   end
 
   # 1. Clean directory
@@ -143,6 +149,7 @@ end
 
 desc 'Build and deploy your prototype to Playgrounds'
 task deploy: [
+  'deploy:clean',
   'deploy:set_worktree',
   'deploy:build',
   'deploy:gh_pages',

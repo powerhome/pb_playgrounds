@@ -107,7 +107,7 @@ namespace :deploy do # rubocop:disable Metrics/BlockLength
 
     `cd out && git add .`
     `cd out && git commit -m 'Deploy to gh-pages'`
-    `cd out && git push`
+    `cd out && git push --force`
 
     puts "\nDeployed to: https://tech.powerhrg.com/playgrounds/#{branch_name}\n"
   end

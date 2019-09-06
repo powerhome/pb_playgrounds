@@ -12,6 +12,5 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require playbook/app/pb_kits/playbook/packs/application
 //= require turbolinks
 //= require_tree .

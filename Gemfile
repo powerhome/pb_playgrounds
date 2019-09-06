@@ -14,7 +14,7 @@ gem "turbolinks", "~> 5"
 gem "jbuilder", "~> 2.5"
 gem "bootsnap", ">= 1.1.0", require: false
 
-gem "playbook_ui", "2.8.4"
+gem "playbook_ui", "2.8.7"
 gem "nitro_sg", "3.0.2"
 
 group :development, :test do

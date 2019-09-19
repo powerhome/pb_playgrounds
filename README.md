@@ -1,16 +1,15 @@
 # Playgrounds
 
-Playground for Playbook UI Kits
+Playgrounds is a standard webpacker rails environment that is intended for Playbook UI Kits, and building Nitro prototypes.
 
-## Prerequisites
+# Prerequisites
 
-### Node version manager (NVM)
+#### Node version manager (NVM)
 
-This utility is used throughout Nitro to keep us all at the same version of `node` and prevent chaos.
+This utility is used throughout Nitro to keep us all at the same version of `node` and prevent chaos. [NVM Installation Instructions on Github](https://github.com/nvm-sh/nvm#install--update-script).
 
-[NVM Installation Instructions on Github](https://github.com/nvm-sh/nvm#install--update-script)
-
-Follow the instructions in the link above
+<details><summary>NVM for ZSH Users</summary>
+<p>
 
 #### ZSH Users: Add this code block somewhere in your `~/.zshrc`
 
@@ -24,8 +23,12 @@ load-nvmrc() {
 }
 add-zsh-hook chpwd load-nvmrc
 ```
+</p>
+</details>
 
-## Getting Started
+---
+
+# Getting Started
 
 ```bash
 # ruby version 2.5.0
@@ -44,11 +47,60 @@ rails s
 
 View prototype on [http://localhost:3000](http://localhost:3000).
 
+
 #### Other Features
 
-- `yarn build` - this will compile (only once) and will not deliver updates automatically to your browser on save.
+<details><summary>Enable Webpack HMR (Hot Module Reloading)</summary>
+  <p>
 
-## New Prototype
+  #### Webpack HMR
+
+  Webpack Hot Module Reloading (HMR) is enabled in `Playgrounds` which allows you to make changes to a React component and immediately see the changes you made in your browser *without needing to refresh!*
+
+  Here's how to get that feature working:
+
+  1. in a new tab, from the current `playgrounds` working directory root:
+
+      - `yarn hmr` - this starts the HMR server which will actively watch, compile and deliver updates to your browser just by saving changes.
+
+  </p>
+</details>
+
+<details>
+  <summary>Working with a Local Version of Playbook</summary>
+
+  #### Working with a Local Version of Playbook in React
+
+
+  Another available feature is the ability to work with your current locally cloned `Playbook` repository. To enable this you will need to follow these steps:
+
+  1. Change directories to your local `playbook-ui` repo instance.
+  2. Run `yarn link` - this will create a symlink to this repository that you will use in the last step
+  3. Change directories to your local `playgrounds` repo instance.
+  4. Run `yarn link playbook-ui` - this completes the linking to the symlink that you created in step #2 above.
+
+  Now you can simply run HMR in `Playgrounds` and make changes to your `Playbook` repo all while seeing the changes propagate instantly in your browser!
+
+  Questions? Please ping Stephen Marshall 👍
+</details>
+
+
+<details><summary>Build only</summary>
+<p>
+
+`yarn build` - this will compile (only once) and will not deliver updates automatically to your browser on save.
+
+</p>
+</details>
+
+---
+
+# New Prototypes
+
+Mostly `Playgrounds` is used to build Nitro prototypes. These prototype branches will never be merged into master. Prototype pull requests are for team review only.
+
+#### New prototype branch
+
 ```bash
 # Always start from master
 git checkout origin master
@@ -69,7 +121,6 @@ git checkout -b demo/my-prototype-name
 git push origin demo/my-prototype-name
 ```
 
-> Playgrounds prototype branches will never be merged into master. Pull requests are for team review only.
 
 ---
 
@@ -77,8 +128,8 @@ git push origin demo/my-prototype-name
 
 <details><summary>Adding new pages</summary>
 <p>
-  
-## Adding New Pages
+
+## Adding New Pages (Routes)
 When you start the server, the root page is [index.html.erb](https://github.com/powerhome/playgrounds/blob/master/app/views/pages/index.html.erb).
 
 If you have a multi-page prototype, you will want to add additional pages.  Please follow the guide below:
@@ -88,13 +139,13 @@ Create a new file in `app/views/pages/my_new_page.html.erb`.
 
 Please note:
 1. The file extension ends in `.html.erb`. This is required.
-2. If the file is descibing a page in multiple words (my new page), and it should be written with underscores.
+2. If the file is describing a page in multiple words (my new page), and it should be written with underscores.
 3. The file name should be all lowercase.
 
 ---
 
 ### 2. Add to controller
-```erb
+```ruby
 # app/controllers/pages_controller.rb
 
 class PagesController < ApplicationController
@@ -109,7 +160,7 @@ Please note:
 ---
 
 ### 3. Create a new route
-```erb
+```ruby
 # config/routes.rb
 
 Rails.application.routes.draw do
@@ -125,56 +176,23 @@ Please note:
 </p>
 </details>
 
-<details>
-  <summary>Working with React + Playbook</summary>
-
-  ## Working with React + Playbook
-
-  `Playgrounds` works really well with `Playbook`, but there is a minor amount of setup required to maximize this effect:
-
-  ### Working with a Local Version of Playbook in React
-
-  #### Webpack HMR
-
-  Webpack Hot Module Reloading (HMR) is enabled in `Playgrounds` which allows you to make changes to a React component and immediately see the changes you made in your browser *without needing to refresh!*
-
-  Here's how to get that feature working:
-
-  1. in a new tab, from the current `playgrounds` working directory root:
-
-      - `yarn hmr` - this starts the HMR server which will actively watch, compile and deliver updates to your browser just by saving changes.
-
-  #### Beyond HMR
-
-  Another available feature is the ability to work with your current locally cloned `Playbook` repository. To enable this you will need to follow these steps:
-
-  1. Change directories to your local `playbook-ui` repo instance.
-  2. Run `yarn link` - this will create a symlink to this repository that you will use in the last step
-  3. Change directories to your local `playgrounds` repo instance.
-  4. Run `yarn link playbook-ui` - this completes the linking to the symlink that you created in step #2 above.
-
-  Now you can simply run HMR in `Playgrounds` and make changes to your `Playbook` repo all while seeing the changes propogate instantly in your browser!
-
-  Questions? Please ping Stephen Marshall 👍
-</details>
-
 <details><summary>Using Playbook Kits</summary>
-  
+
   ## Using Playbook Kits
-  
+
   ### Confirm styles are imported
   ```scss
   // app/assets/stylesheets/application.scss
-  
+
   @import "playbook";
   ```
-  
+
   *Warning!* Using both storybook and playbook design libraries may cause style bleed.
-  
+
   ### Use kits in views
   ```erb
   # Use kits in your prototype views
-  
+
   <%= pb_rails("card") do %>
     <%= pb_rails("caption", props: {text: "This is a caption"}) %>
   <% end %>
@@ -182,16 +200,16 @@ Please note:
 </details>
 
 <details><summary>Using Storybook</summary>
-  
+
   ## Using Storybook
-  
+
   ### Confirm styles are imported
   ```scss
   // app/assets/stylesheets/application.scss
-  
+
   @import "storybook";
   ```
-  
+
   *Warning!* Using both storybook and playbook design libraries may cause style bleed.
 </details>
 
@@ -199,7 +217,7 @@ Please note:
 
 <details>
   <summary>Yarn packages are out of date</summary>
-  
+
   ## Yarn packages are out of date
 If you try running playgrounds by `rails s`, but the terminal says:
 

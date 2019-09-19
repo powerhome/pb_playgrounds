@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
   # layout "nitro";
 
-  def index; end
+  def index
+    render template: 'pages/welcome'
+  end
 end

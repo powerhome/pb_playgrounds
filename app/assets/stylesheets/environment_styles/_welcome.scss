@@ -1,0 +1,15 @@
+html, body, .welcome_page {
+  height: 100%;
+}
+
+.welcome_page {
+  @import "welcome/code_examples";
+  @import "welcome/intro";
+  &_using_pb, &_using_react, &_using_pg {
+    padding: $space_xl $space_sm;
+  }
+  &_using_pb, &_using_react {
+    background: linear-gradient(-45deg, $gradient_start 0%, $gradient_end 100%);
+  }
+
+}

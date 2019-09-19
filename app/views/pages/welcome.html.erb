@@ -1,0 +1,135 @@
+<div class="welcome_page">
+
+  <div class="welcome_page_intro">
+    <div class="welcome_page_intro_left">
+      <img src="assets/logo.svg" alt="">
+      <%= pb_rails "icon", props: { icon: "angle-double-down", size: "3x", classname: "chevron" } %>
+    </div>
+    <div class="welcome_page_intro_right">
+      <img src="assets/graphic.svg" alt="">
+    </div>
+  </div>
+
+  <div class="welcome_page_using_pb">
+    <%= pb_rails "title", props: { text: "Using Playbook", size: 1, dark: true, classname: "text-center mb-4"} %>
+    <div class="container">
+      <%= pb_rails "card", props: { shadow: "deepest", selected: true, classname: "card_examples", padding: "none" } do %>
+        <div class="container-fluid container-sm">
+          <%= pb_rails "card/card_body", props: { padding: "md" } do %>
+            <%= pb_rails "caption", props: {text: "Using Kits", large: true, classname: "mb-1"} %>
+            <%= pb_rails("body") do %>
+              <p>You can find all of our kits at <a href="https://playbook.powerapp.cloud">playbook.powerapp.cloud</a></p>
+              <p>Once you find a kit you want to use, click the title, then tap the code example button to see the code needed.</p>
+              <p>You can simply copy and paste it into this environment.</p>
+            <% end %>
+
+            <%= pb_rails "caption", props: {text: "Example", large: true, classname: "mb-1"} %>
+            <%= pb_rails("avatar", props: {
+              name: "Terry Johnson",
+              size: "xl",
+              image: {url: "https://randomuser.me/api/portraits/men/44.jpg"},
+              status: "away"
+            }) %>
+
+          <% end %>
+        </div>
+        <div class="code_example">
+          <pre class="highlight m-0"><code>
+          <span class="cp">&lt;%=</span> <span class="n">pb_rails</span><span class="p">(</span><span class="s2">"avatar"</span><span class="p">,</span> <span class="ss">props: </span><span class="p">{</span>
+              <span class="ss">name: </span><span class="s2">"Terry Johnson"</span><span class="p">,</span>
+              <span class="ss">size: </span><span class="s2">"xl"</span><span class="p">,</span>
+              <span class="ss">image: </span><span class="p">{</span><span class="ss">url: </span><span class="s2">"https://randomuser.me/api/portraits/men/44.jpg"</span><span class="p">},</span>
+              <span class="ss">status: </span><span class="s2">"away"</span>
+            <span class="p">})</span> <span class="cp">%&gt;</span>
+          </code></pre>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="welcome_page_using_pg">
+    <%= pb_rails "title", props: { text: "Using Playgrounds", size: 1, classname: "text-center mb-4"} %>
+    <div class="container-fluid container-sm">
+      <%= pb_rails "caption", props: {text: "Starting your prototype", large: true, classname: "mb-1"} %>
+      <%= pb_rails("body") do %>
+        <p>When you are ready you can go to the pages controller and remove the welcome template from the index <%= pb_rails "body", props: { color: "light", tag: "span"} do %>(render template: 'pages/welcome')<% end %>.</p>
+      <% end %>
+      <%= pb_rails "caption", props: {text: "Adding the nitro nav", large: true, classname: "mt-5 mb-1"} %>
+      <%= pb_rails("body") do %>
+        <p>You can optionally add the Nitro nav to make your prototype feel more like Nitro. Just uncomment line 2 of the pages controller.</p>
+      <% end %>
+      <%= pb_rails "caption", props: {text: "Working with styles", large: true, classname: "mt-5 mb-1"} %>
+      <%= pb_rails("body") do %>
+        <p>You can work directly in the <%= pb_rails "body", props: { color: "light", tag: "span"} do %>application.scss<% end %> file. The top of this file contains the environment setup. You can remove what you do not need. For CSS use <a href="https://github.com/powerhome/playbook/tree/master/app/pb_kits/playbook/tokens">The tokens</a> from playbook for colors, spacing, borders, shadows, and other defined properties.</p>
+      <% end %>
+      <%= pb_rails "caption", props: {text: "Working with styles", large: true, classname: "mt-5 mb-1"} %>
+      <%= pb_rails("body") do %>
+        <p><a href="https://github.com/powerhome/playgrounds#adding-new-pages">Adding new pages</a></p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="welcome_page_using_react">
+
+    <%= pb_rails "title", props: { text: "Using React", size: 1, dark: true, classname: "text-center mb-4"} %>
+    <div class="container">
+      <%= pb_rails "card", props: { shadow: "deepest", selected: true, classname: "card_examples", padding: "none" } do %>
+        <div class="container-fluid container-sm">
+          <%= pb_rails "card/card_body", props: { padding: "md" } do %>
+
+            <%= pb_rails "caption", props: {text: "Where to get started?", large: true, classname: "mb-1"} %>
+            <%= pb_rails("body") do %>
+              <p>Wheather you are writing plain javascript, or react you can start in the <%= pb_rails "body", props: { color: "light", tag: "span"} do %>application.js<% end %> file within the packs folder. From there you can start importing and creating react components.</p>
+            <% end %>
+            <%= pb_rails "caption", props: {text: "Additional react examples", large: true, classname: "mt-5 mb-1"} %>
+            <%= pb_rails("body") do %>
+              <p>You can optionally add the Nitro nav to make your prototype feel more like Nitro. Just uncomment line 2 of the pages controller.</p>
+            <% end %>
+            <%= pb_rails "caption", props: {text: "Example", large: true, classname: "mb-1"} %>
+            <%= javascript_pack_tag "environment_js/welcome_files/reactWelcome" %>
+            <section id="react_welcome_example">
+              <!-- React components here -->
+            </section>
+          <% end %>
+        </div>
+
+        <div class="code_example">
+          <pre class="highlight"><code>
+            import React from "react"
+            import Avatar from "../_avatar.jsx"
+
+            function AvatarDefault() {
+              return (
+                <span class="nt">&lt;div&gt;</span>
+                  <span class="nt">&lt;Avatar</span>
+                      <span class="na">name=</span><span class="s">"Terry Johnson"</span>
+                      <span class="na">size=</span><span class="s">"xl"</span>
+                      <span class="na">status=</span><span class="s">"offline"</span>
+                      <span class="na">url=</span><span class="s">"https://randomuser.me/api/portraits/men/44.jpg"</span>
+                  <span class="nt">/&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+              )
+            }
+
+            export default AvatarDefault;
+            </code></pre>
+        </div>
+
+        <div class="container-fluid container-sm">
+          <%= pb_rails "card/card_body", props: { padding: "md" } do %>
+            <%= pb_rails "caption", props: {text: "Additional react examples", large: true, classname: "mb-1"} %>
+            <%= pb_rails("body") do %>
+              <p>You can add view additional react examples by adding or importing the <%= pb_rails "body", props: { color: "light", tag: "span"} do %>environment_js/welcome_files/additionalExamples.jsx<% end %> to the view </p>
+            <% end %>
+            <%= pb_rails "caption", props: {text: "Additional resources", large: true, classname: "mt-5 mb-1"} %>
+            <%= pb_rails("body") do %>
+              <p>You can find additional details about react on the <a href="https://github.com/powerhome/playgrounds/blob/master/README.md">playgrounds readme</a>.</p>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+
+</div>

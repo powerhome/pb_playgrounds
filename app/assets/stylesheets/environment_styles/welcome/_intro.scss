@@ -1,0 +1,72 @@
+@keyframes custom_pulse {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale3d(1, 1, 1) translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0
+  }
+
+  100% {
+    opacity: 1
+  }
+}
+
+&_intro {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  @media (max-width: 768px) {
+    flex-direction: column-reverse;
+  }
+  &_left {
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    padding: 40px;
+    flex-direction: column;
+    .chevron {
+      animation-name: custom_pulse;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+      color: $text_lt_light;
+      margin-top: $space_lg
+    }
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-width: 430px;
+    }
+  }
+  &_right {
+    background: $bg_dark;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    padding: 40px;
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-width: 630px;
+    }
+  }
+}

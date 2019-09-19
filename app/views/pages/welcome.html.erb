@@ -52,7 +52,7 @@
     <div class="container-fluid container-sm">
       <%= pb_rails "caption", props: {text: "Starting your prototype", large: true, classname: "mb-1"} %>
       <%= pb_rails("body") do %>
-        <p>When you are ready you can go to the pages controller and remove the welcome template from the index <%= pb_rails "body", props: { color: "light", tag: "span"} do %>(render template: 'pages/welcome')<% end %>.</p>
+        <p>When you are ready you can go to the pages controller and remove the welcome template from the index <%= pb_rails "body", props: { color: "light", tag: "span"} do %>(render template: 'pages/welcome')<% end %>. You can now work out of the <%= pb_rails "body", props: { color: "light", tag: "span"} do %>views/pages/index.html.erb<% end %> file.</p>
       <% end %>
       <%= pb_rails "caption", props: {text: "Adding the nitro nav", large: true, classname: "mt-5 mb-1"} %>
       <%= pb_rails("body") do %>
@@ -62,9 +62,9 @@
       <%= pb_rails("body") do %>
         <p>You can work directly in the <%= pb_rails "body", props: { color: "light", tag: "span"} do %>application.scss<% end %> file. The top of this file contains the environment setup. You can remove what you do not need. For CSS use <a href="https://github.com/powerhome/playbook/tree/master/app/pb_kits/playbook/tokens">The tokens</a> from playbook for colors, spacing, borders, shadows, and other defined properties.</p>
       <% end %>
-      <%= pb_rails "caption", props: {text: "Working with styles", large: true, classname: "mt-5 mb-1"} %>
+      <%= pb_rails "caption", props: {text: "Additional resources", large: true, classname: "mt-5 mb-1"} %>
       <%= pb_rails("body") do %>
-        <p><a href="https://github.com/powerhome/playgrounds#adding-new-pages">Adding new pages</a></p>
+        <p><a href="https://github.com/powerhome/playgrounds#adding-new-pages-routes">Adding new pages</a></p>
       <% end %>
     </div>
   </div>
@@ -79,11 +79,11 @@
 
             <%= pb_rails "caption", props: {text: "Where to get started?", large: true, classname: "mb-1"} %>
             <%= pb_rails("body") do %>
-              <p>Wheather you are writing plain javascript, or react you can start in the <%= pb_rails "body", props: { color: "light", tag: "span"} do %>application.js<% end %> file within the packs folder. From there you can start importing and creating react components.</p>
+              <p>Whether you are writing plain javascript, or React you can start in the <%= pb_rails "body", props: { color: "light", tag: "span"} do %>application.js<% end %> file within the packs folder. From there you can start importing and creating React components.</p>
             <% end %>
-            <%= pb_rails "caption", props: {text: "Additional react examples", large: true, classname: "mt-5 mb-1"} %>
+            <%= pb_rails "caption", props: {text: "Working with kits", large: true, classname: "mt-5 mb-1"} %>
             <%= pb_rails("body") do %>
-              <p>You can optionally add the Nitro nav to make your prototype feel more like Nitro. Just uncomment line 2 of the pages controller.</p>
+              <p>WOrking with react kits is very simular to rails. Once you find a kit you want to use, click the title, then tap the code example button to see the code needed. You can simply copy and paste it into this environment.</p>
             <% end %>
             <%= pb_rails "caption", props: {text: "Example", large: true, classname: "mb-1"} %>
             <%= javascript_pack_tag "environment_js/welcome_files/reactWelcome" %>
@@ -119,7 +119,7 @@
           <%= pb_rails "card/card_body", props: { padding: "md" } do %>
             <%= pb_rails "caption", props: {text: "Additional react examples", large: true, classname: "mb-1"} %>
             <%= pb_rails("body") do %>
-              <p>You can add view additional react examples by adding or importing the <%= pb_rails "body", props: { color: "light", tag: "span"} do %>environment_js/welcome_files/additionalExamples.jsx<% end %> to the view </p>
+              <p>You can add view additional react examples by adding or importing the <%= pb_rails "body", props: { color: "light", tag: "span"} do %>environment_js/welcome_files/additionalExamples.jsx<% end %> to the view.</p>
             <% end %>
             <%= pb_rails "caption", props: {text: "Additional resources", large: true, classname: "mt-5 mb-1"} %>
             <%= pb_rails("body") do %>

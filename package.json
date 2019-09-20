@@ -9,6 +9,7 @@
     "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@rails/webpacker": "^4.0.7",
+    "babel-plugin-jsx-control-statements": "^4.0.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "jsx-control-statements": "^3.2.8",
     "node-sass": "4.5.3",
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "clean-webpack-plugin": "^2.0.1",
+    "eslint-plugin-jsx-control-statements": "2.2.0",
     "webpack-dev-server": "^3.7.2"
   }
 }

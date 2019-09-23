@@ -10,6 +10,7 @@
     "@babel/preset-react": "^7.0.0",
     "@rails/webpacker": "^4.0.7",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "jsx-control-statements": "^3.2.8",
     "node-sass": "4.5.3",
     "playbook-ui": "^2.8.9",
     "prop-types": "^15.7.2",

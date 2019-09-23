@@ -44,6 +44,7 @@ module.exports = function(api) {
       '@babel/flow'
     ].filter(Boolean),
     plugins: [
+      'jsx-control-statements',
       require('babel-plugin-macros'),
       require('@babel/plugin-syntax-dynamic-import').default,
       isTestEnv && require('babel-plugin-dynamic-import-node'),

@@ -5518,10 +5518,10 @@ pkg-dir@^3.0.0:
   dependencies:
     find-up "^3.0.0"
 
-playbook-ui@^2.9.5:
-  version "2.9.5"
-  resolved "https://registry.yarnpkg.com/playbook-ui/-/playbook-ui-2.9.5.tgz#6430f08343bce53c155f1bd1de87027668108b41"
-  integrity sha512-+65UhFiOvPXOzjy7rlKt2VKAIgO2Qzed5UGUk+tvNi+Ykes7gTlzPV2zlCkk0kcYeAP0qtwKZWeL421IFoL6Bw==
+playbook-ui@^2.9.7:
+  version "2.9.7"
+  resolved "https://registry.yarnpkg.com/playbook-ui/-/playbook-ui-2.9.7.tgz#02edd011056aa406f5ec4e1ccbf6c5fb584fa39f"
+  integrity sha512-juzoo5u9I91V9/a9XTkt5spyyCkg/6NuyTLY6tZCP30zFy+DLMv2APXJZGp2wYA44R5RliNU5u6KWmnykDTwpQ==
   dependencies:
     "@babel/cli" "7.2.3"
     "@babel/core" "^7.3.4"

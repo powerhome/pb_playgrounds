@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'action_dispatch/routing/inspector'
+require 'fileutils'
 
 namespace :deploy do # rubocop:disable Metrics/BlockLength
   desc 'Build the files'
@@ -33,7 +34,7 @@ namespace :deploy do # rubocop:disable Metrics/BlockLength
 
       puts "Making directory: #{out}"
 
-      FileUtils.mkdir out unless File.exist? out
+      FileUtils.mkdir_p out unless File.exist? out
 
       wget_args = [
         '-mnH -p -k --adjust-extension --timeout=10',
@@ -113,8 +114,8 @@ namespace :deploy do # rubocop:disable Metrics/BlockLength
   end
 
   desc 'Cleanup'
-  task clean: :environment do	
-    puts "\nCleaning directory...\n"	
+  task clean: :environment do
+    puts "\nCleaning directory...\n"
     `rm -rf out`
   end
 

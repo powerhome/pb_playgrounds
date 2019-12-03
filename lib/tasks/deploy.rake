@@ -26,19 +26,18 @@ namespace :deploy do # rubocop:disable Metrics/BlockLength
 
     allowed_controllers = ['pages']
     all_routes.select! { |route| allowed_controllers.include?(route[:controller]) }
-
     ActionDispatch::Routing::RoutesInspector.new(all_routes)
 
     all_routes.each do |route|
-      route_path = route[:path]
+      route_path = route[:path].gsub(/\(.:format\)/, '')
 
       puts "Making directory: #{out}"
 
       FileUtils.mkdir_p out unless File.exist? out
 
       wget_args = [
-        '-mnH -p -k --adjust-extension --timeout=10',
-        '--waitretry=10 --tries=15 --retry-connrefused'
+        '-mnH -p -k --adjust-extension --timeout=50',
+        '--waitretry=50 --tries=15 --retry-connrefused'
       ]
 
       FileUtils.chdir out do

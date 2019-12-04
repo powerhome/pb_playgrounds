@@ -31,7 +31,9 @@ namespace :deploy do # rubocop:disable Metrics/BlockLength
     all_routes.each do |route|
       route_path = route[:path].gsub(/\(.:format\)/, '')
 
+      puts "\n"
       puts "Making directory: #{out}"
+      puts "\n"
 
       FileUtils.mkdir_p out unless File.exist? out
 
@@ -41,8 +43,16 @@ namespace :deploy do # rubocop:disable Metrics/BlockLength
       ]
 
       FileUtils.chdir out do
-        puts "Saving http://localhost:3000#{route_path}..."
-        `wget #{wget_args.join(' ')} http://localhost:3000#{route[:path]}`
+
+        puts "\n"
+        puts "Saving http://localhost:3000#{route_path}"
+        puts "\n"
+
+        begin
+          `wget #{wget_args.join(' ')} http://localhost:3000#{route_path}`
+        rescue NoMethodError => e
+          puts e
+        end
       end
     end
 
@@ -57,6 +67,7 @@ namespace :deploy do # rubocop:disable Metrics/BlockLength
   task test: :environment do
     branch_name = `git rev-parse --abbrev-ref HEAD`.chomp
     Dir.chdir 'out' do
+
       puts "\n"
       puts "Started HTTP server at http://localhost:8000/#{branch_name}/"
       puts 'Press CTRL+C to exit.'

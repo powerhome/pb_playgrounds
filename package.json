@@ -6,14 +6,15 @@
     "hmr": "./bin/webpack-dev-server"
   },
   "dependencies": {
+    "@babel/plugin-proposal-export-default-from": "7.7.4",
     "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@rails/webpacker": "^4.0.7",
     "babel-plugin-jsx-control-statements": "^4.0.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "jsx-control-statements": "^3.2.8",
-    "node-sass": "4.5.3",
-    "playbook-ui": "^2.9.9",
+    "node-sass": "4.12.0",
+    "playbook-ui": "4.1.2",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

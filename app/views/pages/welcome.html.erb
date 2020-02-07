@@ -54,10 +54,6 @@
       <%= pb_rails("body") do %>
         <p>When you are ready you can go to the pages controller and remove the welcome template from the index <%= pb_rails "body", props: { color: "light", tag: "span"} do %>(render template: 'pages/welcome')<% end %>. You can now work out of the <%= pb_rails "body", props: { color: "light", tag: "span"} do %>views/pages/index.html.erb<% end %> file.</p>
       <% end %>
-      <%= pb_rails "caption", props: {text: "Adding the nitro nav", large: true, classname: "mt-5 mb-1"} %>
-      <%= pb_rails("body") do %>
-        <p>You can optionally add the Nitro nav to make your prototype feel more like Nitro. Just uncomment line 2 of the pages controller.</p>
-      <% end %>
       <%= pb_rails "caption", props: {text: "Working with styles", large: true, classname: "mt-5 mb-1"} %>
       <%= pb_rails("body") do %>
         <p>You can work directly in the <%= pb_rails "body", props: { color: "light", tag: "span"} do %>application.scss<% end %> file. The top of this file contains the environment setup. You can remove what you do not need. For CSS use <a href="https://github.com/powerhome/playbook/tree/master/app/pb_kits/playbook/tokens">The tokens</a> from playbook for colors, spacing, borders, shadows, and other defined properties.</p>
@@ -85,6 +81,7 @@
             <%= pb_rails("body") do %>
               <p>Working with react kits is very simular to rails. Once you find a kit you want to use, click the title, then tap the code example button to see the code needed. You can simply copy and paste it into this environment.</p>
             <% end %>
+            <br>
             <%= pb_rails "caption", props: {text: "Example", large: true, classname: "mb-1"} %>
             <%= javascript_pack_tag "environment_js/welcome_files/reactWelcome" %>
             <section id="react_welcome_example">

@@ -13,7 +13,7 @@ gem "turbolinks", "~> 5"
 gem "jbuilder", "~> 2.5"
 gem "bootsnap", ">= 1.1.0", require: false
 
-gem "playbook_ui", "4.1.2"
+gem "playbook_ui", "4.2.0"
 gem "react-rails", "2.6.0"
 
 group :development, :test do

@@ -14,7 +14,7 @@
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "jsx-control-statements": "^3.2.8",
     "node-sass": "4.12.0",
-    "playbook-ui": "4.1.2",
+    "playbook-ui": "4.2.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

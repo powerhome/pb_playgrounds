@@ -187,8 +187,6 @@ Please note:
   @import "playbook";
   ```
 
-  *Warning!* Using both storybook and playbook design libraries may cause style bleed.
-
   ### Use kits in views
   ```erb
   # Use kits in your prototype views
@@ -197,20 +195,6 @@ Please note:
     <%= pb_rails("caption", props: {text: "This is a caption"}) %>
   <% end %>
   ```
-</details>
-
-<details><summary>Using Storybook</summary>
-
-  ## Using Storybook
-
-  ### Confirm styles are imported
-  ```scss
-  // app/assets/stylesheets/application.scss
-
-  @import "storybook";
-  ```
-
-  *Warning!* Using both storybook and playbook design libraries may cause style bleed.
 </details>
 
 # Troubleshooting
